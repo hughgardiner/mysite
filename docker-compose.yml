@@ -1,0 +1,21 @@
+version: '3'
+services:
+  postgres:
+    container_name: mysite-postgres
+    image: postgres:10.4-alpine
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_DB: mysite
+      POSTGRES_USER: hugh
+      POSTGRES_PASSWORD: mysecretpassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+  go-server:
+    container_name: mysite-go
+    image: golang:1.11.0-alpine3.8
+    volumes:
+      - .:/go/src/mysite
+    working_dir: /go/src/mysite
+    command: go run main.go

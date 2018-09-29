@@ -1,0 +1,40 @@
+type Person {
+  name: String!
+  dateOfBirth: Date!
+  hobbies: [Hobby]
+  jobs: [Job]
+  pictureUrl: String
+  educationHistory: [Education]
+}
+
+type Hobby {
+  name: String!
+  description: String!
+  startedAt: Date!
+  pictureUrl: String
+}
+
+type Job {
+  companyName: String!
+  description: String!
+  experiences: [Experience]!
+  pictureUrl: String
+}
+
+type Experience {
+  title: String!
+  description: String
+  startedAt: Date!
+  endedAt: Date
+  pictureUrl: String
+}
+
+type Education {
+  institution: String!
+  level: String!
+  location: String!
+  pictureUrl: String
+  startedAt: Date!
+  endedAt: Date
+  extracurriculars: [Experiences]
+}
